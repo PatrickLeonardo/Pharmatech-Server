@@ -1,1 +1,8 @@
-com/pharmatech/server/ServerApplication.class
+server/repository/UserRepository.class
+server/controllers/ClientController.class
+server/repository/ClientRepository.class
+server/model/User.class
+server/model/Client.class
+server/controllers/HomeController.class
+server/model/TipoDeUsuario.class
+server/ServerApplication.class
