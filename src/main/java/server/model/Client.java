@@ -14,19 +14,19 @@ import lombok.Data;
 public class Client {
     
     @Column(name="CPF")
-    private String cpf;
+    private String CPF;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
 
-    public void setCPF(final String cpf){
-        this.cpf = cpf;
+    public void setCPF(final String CPF){
+        this.CPF = CPF;
     }
 
     public String getCPF() {
-        return this.cpf;
+        return this.CPF;
     }
 
     public void setId(Long id) {

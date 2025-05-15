@@ -1,8 +1,11 @@
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/ServerApplication.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/ClientController.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/HomeController.java
+/home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/MedicationsController.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Client.java
+/home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Medication.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/TipoDeUsuario.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/User.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/repository/ClientRepository.java
+/home/patrick/Desktop/Pharmatech-Server/src/main/java/server/repository/MedicationsRepository.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/repository/UserRepository.java

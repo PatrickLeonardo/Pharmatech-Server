@@ -1,7 +1,10 @@
 server/repository/UserRepository.class
 server/controllers/ClientController.class
+server/controllers/MedicationsController.class
 server/repository/ClientRepository.class
 server/model/User.class
+server/repository/MedicationsRepository.class
+server/model/Medication.class
 server/model/Client.class
 server/controllers/HomeController.class
 server/model/TipoDeUsuario.class
