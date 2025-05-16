@@ -8,6 +8,6 @@ import server.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-    //User findByCPF(String CPF);
+    User findByCpfAndSenha(String CPF, String password);
 
 }

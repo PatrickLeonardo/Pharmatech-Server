@@ -33,12 +33,16 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(path = "findByCPF")
-    public ResponseEntity<Null> findByCPF(@Valid @RequestParam final String CPF) {
+    @GetMapping(path = "findUserByCPFAndPassword")
+    public ResponseEntity<Null> findUserByCPFAndPassword(@Valid @RequestParam final String CPF, @Valid @RequestParam final String password) {
         
-        if(clientRepository.findByCPF(CPF) == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Status Code 404
-        } else return new ResponseEntity<>(HttpStatus.FOUND); // Status Code 302
+        if(clientRepository.findByCPF(CPF) != null) {
+            
+            if(userRepository.findByCpfAndSenha(CPF, password) != null) {  
+                return new ResponseEntity<>(HttpStatus.FOUND); // Status Code 302
+            } else return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Status Code 404
+            
+        } else return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Status Code 404
         
     }
 
@@ -49,6 +53,8 @@ public class ClientController {
             return new ResponseEntity<>(HttpStatus.REQUEST_TIMEOUT);
         }
         
+        System.out.println(user.getCPF());
+
         user.setTipoDeUsuario("Cliente");
         userRepository.save(user);
 
