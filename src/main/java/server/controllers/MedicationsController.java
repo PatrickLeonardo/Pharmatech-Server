@@ -3,6 +3,7 @@ package server.controllers;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -55,6 +56,15 @@ public class MedicationsController {
         final List<Medication> medications = medicationsRepository.findByNomeLike("%" + nome + "%");
         
         return ResponseEntity.ok(medications);
+
+    }
+
+    @GetMapping(path = "findById")
+    public ResponseEntity<Optional<Medication>> findById(@Valid @RequestParam Long id) {
+
+        final Optional<Medication> medication = medicationsRepository.findById(id);
+
+        return ResponseEntity.ok(medication);
 
     }
 

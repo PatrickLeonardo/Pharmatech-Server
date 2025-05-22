@@ -10,5 +10,7 @@ import server.model.Cart;
 public interface CartRepository extends JpaRepository<Cart, Long> {
 
     List<Cart> findByIdCliente(int idCliente);
+    
+    List<Cart> findById(int id);
 
 }
