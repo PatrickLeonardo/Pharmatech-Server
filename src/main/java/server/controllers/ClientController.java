@@ -46,6 +46,15 @@ public class ClientController {
         
     }
 
+    @GetMapping(path = "findClientIdByCPF")
+    public ResponseEntity<Long> findClientIdByCPF(@Valid @RequestParam final String CPF) {
+
+        Client client = clientRepository.findByCPF(CPF);
+
+        return ResponseEntity.ok(client.getId());
+
+    }
+
     @PostMapping(path = "newClient")
     public ResponseEntity<Null> newClient(@Valid @RequestBody final User user, final BindingResult bindingResult) {
 
