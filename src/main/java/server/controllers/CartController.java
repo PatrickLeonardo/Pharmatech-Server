@@ -34,7 +34,19 @@ public class CartController {
             return new ResponseEntity<HttpStatus>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        cartRepository.save(cart);
+        Cart amazenededCart = cartRepository.findByIdMedicamento(cart.getIdMedicamento());
+
+        if(amazenededCart == null) {
+            
+            cartRepository.save(cart);
+            
+        } else {
+
+            amazenededCart.setQuantidade(amazenededCart.getQuantidade() + cart.getQuantidade());
+            cartRepository.save(amazenededCart);
+            
+        }
+        
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
 
     }
