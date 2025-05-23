@@ -46,12 +46,12 @@ public class ClientController {
         
     }
 
-    @GetMapping(path = "findClientIdByCPF")
-    public ResponseEntity<Long> findClientIdByCPF(@Valid @RequestParam final String CPF) {
+    @GetMapping(path = "findClientByCPF")
+    public ResponseEntity<Client> findClientIdByCPF(@Valid @RequestParam final String CPF) {
 
         Client client = clientRepository.findByCPF(CPF);
 
-        return ResponseEntity.ok(client.getId());
+        return ResponseEntity.ok(client);
 
     }
 

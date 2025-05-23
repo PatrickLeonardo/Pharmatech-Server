@@ -31,6 +31,9 @@ public class Medication {
     @Column
     private Double preco;
 
+    @Column
+    private Boolean precisaDeReceita;
+
     public Long getId() {
         return this.id;
     }
@@ -53,6 +56,10 @@ public class Medication {
 
     public Double getPreco() {
         return this.preco;
+    }
+
+    public Boolean getPrecisaDeReceita() {
+        return this.precisaDeReceita;
     }
 
 }

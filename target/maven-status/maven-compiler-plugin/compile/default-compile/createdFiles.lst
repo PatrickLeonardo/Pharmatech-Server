@@ -5,6 +5,7 @@ server/model/User.class
 server/model/Medication.class
 server/model/TipoDeUsuario.class
 server/controllers/CartController.class
+server/controllers/UserController.class
 server/controllers/MedicationsController.class
 server/repository/MedicationsRepository.class
 server/repository/CartRepository.class

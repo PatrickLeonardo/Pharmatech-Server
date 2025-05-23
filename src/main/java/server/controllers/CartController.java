@@ -34,7 +34,7 @@ public class CartController {
             return new ResponseEntity<HttpStatus>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        Cart amazenededCart = cartRepository.findByIdMedicamento(cart.getIdMedicamento());
+        Cart amazenededCart = cartRepository.findByIdMedicamentoAndIdCliente(cart.getIdMedicamento(), cart.getIdCliente());
 
         if(amazenededCart == null) {
             

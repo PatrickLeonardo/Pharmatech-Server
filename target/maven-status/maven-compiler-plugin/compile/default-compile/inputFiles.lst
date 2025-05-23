@@ -3,6 +3,7 @@
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/ClientController.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/HomeController.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/MedicationsController.java
+/home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/UserController.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Cart.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Client.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Medication.java
