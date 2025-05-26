@@ -64,6 +64,10 @@ public class ClientController {
         
         System.out.println(user.getCPF());
 
+        if(userRepository.findByCpf(user.getCPF()) != null) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
         user.setTipoDeUsuario("Cliente");
         userRepository.save(user);
 
