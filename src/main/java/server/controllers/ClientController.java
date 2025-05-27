@@ -62,9 +62,7 @@ public class ClientController {
             return new ResponseEntity<>(HttpStatus.REQUEST_TIMEOUT);
         }
         
-        System.out.println(user.getCPF());
-
-        if(userRepository.findByCpf(user.getCPF()) != null) {
+        if(userRepository.findByCpf(user.getCpf()) != null) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
 
@@ -72,7 +70,7 @@ public class ClientController {
         userRepository.save(user);
 
         final Client client = new Client();
-        client.setCPF(user.getCPF());
+        client.setCPF(user.getCpf());
 
         clientRepository.save(client); 
 

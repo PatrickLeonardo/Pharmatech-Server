@@ -56,18 +56,18 @@ CREATE TABLE tbCarrinho (
 );
 
 INSERT INTO tbUsuarios VALUES 
-    ('123.456.789-10', 'Thiago Ribeiro', '123', '+5511943123154', 'Rua Paulista 10', 'Cliente'),
-    ('987.654.321-01', 'Robson Nunes', '456', '+5511242154212', 'Rua Arnival 31', 'Farmaceutico'),
-    ('321.212.341-12', 'Reginaldo Dias', '789', '+551192491941', 'Rua Condor 21', 'Almoxerife'),
-    ('941.321.512-04', 'Lineu Silva', '012', '+551124124293', 'Rua Eldorado 54', 'Gerente');
+    ('153.453.820-85', 'Thiago Ribeiro', '123', '+55 (11) 94312-3154', 'Rua da Mooca, 2047',        'Cliente'),
+    ('693.868.540-15', 'Robson Nunes',   '456', '+55 (11) 94215-4212', 'Rua Pedro de Toledo, 447',  'Farmaceutico'),
+    ('903.014.000-32', 'Reginaldo Dias', '789', '+55 (11) 92449-1941', 'Rua André de Andrade, s/n', 'Almoxerife'),
+    ('479.638.030-22', 'Lineu Silva',    '012', '+55 (11) 94102-4293', 'Av. Rebouças, 3970',        'Gerente');
 
-INSERT INTO tbClientes (CPF) VALUES ('123.456.789-10');
+INSERT INTO tbClientes (CPF) VALUES ('153.453.820-85');
 
-INSERT INTO tbFarmaceuticos (CPF) VALUES ('987.654.321-01');
+INSERT INTO tbFarmaceuticos (CPF) VALUES ('693.868.540-15');
 
-INSERT INTO tbAlmoxerifes (CPF) VALUES ('321.212.341-12');
+INSERT INTO tbAlmoxerifes (CPF) VALUES ('903.014.000-32');
 
-INSERT INTO tbGerentes (CPF) VALUES ('941.321.512-04');
+INSERT INTO tbGerentes (CPF) VALUES ('479.638.030-22');
 
 INSERT INTO tbMedicamentos (nome, dosagem, descricao, imagemDoMedicamento, preco, quantidadeDisponivel, precisaDeReceita) VALUES
 	('Dipirona', '500Mg', 'Analgesico e Antitérmico', 'https://io.convertiez.com.br/m/drogaonet/shop/products/images/12098/large/dipirona-monoidratada-medley-500mg-caixa-com-30-comprimidos_7849.jpg', 13.99, 20, false),

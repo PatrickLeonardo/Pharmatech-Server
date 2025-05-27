@@ -34,32 +34,4 @@ public class Medication {
     @Column
     private Boolean precisaDeReceita;
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public String getDosagem() {
-        return this.dosagem;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-    public String getImagemDoMedicamento() {
-        return this.imagemDoMedicamento;
-    }
-
-    public Double getPreco() {
-        return this.preco;
-    }
-
-    public Boolean getPrecisaDeReceita() {
-        return this.precisaDeReceita;
-    }
-
 }

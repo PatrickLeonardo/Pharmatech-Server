@@ -24,36 +24,4 @@ public class Cart {
     @Column(name = "idCliente")
     private int idCliente;
 
-    public void setId(int id) {
-        this.id = id;
-    } 
-
-    public void setIdMedicamento(int idMedicamento) {
-        this.idMedicamento = idMedicamento;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getId(){
-        return this.id;
-    }
-
-    public int getIdMedicamento() {
-        return this.idMedicamento;
-    }
-
-    public int getQuantidade() {
-        return this.quantidade;
-    }
-
-    public int getIdCliente() {
-        return this.idCliente;
-    }
-
 }

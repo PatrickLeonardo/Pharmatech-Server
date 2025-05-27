@@ -21,20 +21,4 @@ public class Client {
     @Column(name="id")
     private Long id;
 
-    public void setCPF(final String CPF){
-        this.CPF = CPF;
-    }
-
-    public String getCPF() {
-        return this.CPF;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
 }
