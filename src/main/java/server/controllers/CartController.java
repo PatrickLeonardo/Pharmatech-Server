@@ -63,6 +63,7 @@ public class CartController {
             Optional<Medication> medication = medicationsRepository.findById(Long.parseLong("%d".formatted(cart.getIdMedicamento())));
             String medicationName = medication.get().getNome();
 
+            jsonObject.put("id", cart.getId());
             jsonObject.put("Cliente", nomeUsuario);
             jsonObject.put("CPF", clientCpf);
             jsonObject.put("Medicamento", medicationName);
