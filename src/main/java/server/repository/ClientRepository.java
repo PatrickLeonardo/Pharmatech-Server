@@ -8,6 +8,6 @@ import server.model.Client;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    Client findByCPF(String CPF);
+    Client findByCpf(String CPF);
 
 }

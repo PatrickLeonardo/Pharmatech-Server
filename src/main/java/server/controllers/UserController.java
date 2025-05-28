@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping(path = "find/{cpf}/{password}")
     public ResponseEntity<Void> find(@Valid @PathVariable final String cpf, @Valid @PathVariable final String password) { 
         
-        if(clientRepository.findByCPF(cpf) != null)
+        if(clientRepository.findByCpf(cpf) != null)
             return ResponseEntity.status((userRepository.findByCpfAndSenha(cpf, password) != null) ? 302 : 404).build();
         
         else return ResponseEntity.status(404).build(); // Status Code 404    

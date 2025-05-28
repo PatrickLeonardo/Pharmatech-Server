@@ -13,8 +13,8 @@ import lombok.Data;
 @Data
 public class Client {
     
-    @Column(name="CPF")
-    private String CPF;
+    @Column(name="cpf")
+    private String cpf;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

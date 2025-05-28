@@ -36,7 +36,7 @@ public class ClientController {
     @GetMapping(path = "findClientByCPF")
     public ResponseEntity<Client> findClientIdByCPF(@Valid @RequestParam final String CPF) {
 
-        Client client = clientRepository.findByCPF(CPF);
+        Client client = clientRepository.findByCpf(CPF);
 
         return ResponseEntity.ok(client);
 
@@ -57,7 +57,7 @@ public class ClientController {
         userRepository.save(user);
 
         final Client client = new Client();
-        client.setCPF(user.getCpf());
+        client.setCpf(user.getCpf());
 
         clientRepository.save(client); 
 

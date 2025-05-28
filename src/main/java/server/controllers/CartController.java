@@ -3,6 +3,8 @@ package server.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import jakarta.validation.Valid;
 import server.model.Cart;
+import server.model.Client;
+import server.model.Medication;
 import server.repository.CartRepository;
+import server.repository.ClientRepository;
+import server.repository.MedicationsRepository;
+import server.repository.UserRepository;
 
 @Controller
 @RequestMapping("/cart")
@@ -26,6 +34,47 @@ public class CartController {
     
     @Autowired
     private CartRepository cartRepository;
+
+    @Autowired 
+    private ClientRepository clientRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private MedicationsRepository medicationsRepository;
+
+    @GetMapping("findAll")
+        public ResponseEntity<String> findAll() {
+
+        List<Cart> cartList = cartRepository.findAll();
+        JSONArray cartArray = new JSONArray();
+        
+        for(Cart cart : cartList) {
+            
+            JSONObject jsonObject = new JSONObject();
+
+            Long clientId = Long.parseLong("%d".formatted(cart.getIdCliente()));
+            
+            Optional<Client> client = clientRepository.findById(clientId);
+            String clientCpf = client.get().getCpf();
+
+            String nomeUsuario = userRepository.findByCpf(clientCpf).getNome(); 
+            Optional<Medication> medication = medicationsRepository.findById(Long.parseLong("%d".formatted(cart.getIdMedicamento())));
+            String medicationName = medication.get().getNome();
+
+            jsonObject.put("Cliente", nomeUsuario);
+            jsonObject.put("CPF", clientCpf);
+            jsonObject.put("Medicamento", medicationName);
+            jsonObject.put("Quantidade", cart.getQuantidade());
+            
+            cartArray.put(jsonObject);
+
+        }
+
+        return ResponseEntity.ok(cartArray.toString());
+
+    }
 
     @PostMapping(path = "insertItemInCart")
     public ResponseEntity<HttpStatus> insertItemInCart(@Valid @RequestBody final Cart cart, final BindingResult bindingResult) {
