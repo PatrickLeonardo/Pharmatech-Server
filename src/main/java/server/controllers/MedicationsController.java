@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -45,6 +47,18 @@ public class MedicationsController {
         final Optional<Medication> medication = medicationsRepository.findById(id);
 
         return ResponseEntity.ok(medication);
+
+    }
+
+    @PutMapping(path = "updateQuantity/{id}/{newQuantity}")
+    public ResponseEntity<String> updateQuantity(@Valid @PathVariable Long id, @Valid @PathVariable int newQuantity) {
+
+        Medication medication = medicationsRepository.findById(id).get();
+        medication.setQuantidadeDisponivel(newQuantity);
+        medicationsRepository.save(medication);
+
+        return ResponseEntity.status(200).build();
+
 
     }
 

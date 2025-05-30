@@ -14,26 +14,29 @@ import lombok.Data;
 public class Medication {
 
     @Id
-    @Column
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "nome")
     private String nome;
 
-    @Column
+    @Column(name = "dosagem")
     private String dosagem;
 
-    @Column
+    @Column(name = "descricao")
     private String descricao;
 
-    @Column
+    @Column(name = "imagemDoMedicamento")
     private String imagemDoMedicamento;
 
-    @Column
+    @Column(name = "preco")
     private Double preco;
 
-    @Column
+    @Column(name = "quantidadeDisponivel")
+    private int quantidadeDisponivel;
+
+    @Column(name = "precisaDeReceita")
     private Boolean precisaDeReceita;
 
 }

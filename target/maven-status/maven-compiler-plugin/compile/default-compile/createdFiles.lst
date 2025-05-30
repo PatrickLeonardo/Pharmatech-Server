@@ -2,13 +2,17 @@ server/repository/UserRepository.class
 server/controllers/ClientController.class
 server/repository/ClientRepository.class
 server/model/User.class
+server/repository/StorekeeperRepository.class
+server/model/Pharmacist.class
 server/model/Medication.class
 server/controllers/CartController.class
 server/controllers/UserController.class
+server/model/Storekeeper.class
 server/controllers/MedicationsController.class
 server/repository/MedicationsRepository.class
 server/repository/CartRepository.class
 server/model/Cart.class
 server/model/Client.class
 server/controllers/HomeController.class
+server/repository/PharmacistRepository.class
 server/ServerApplication.class
