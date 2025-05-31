@@ -55,6 +55,12 @@ CREATE TABLE tbCarrinho (
     FOREIGN KEY(idCliente) REFERENCES tbClientes(id)
 );
 
+CREATE TABLE tbReservas(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    protocolo VARCHAR(20) NOT NULL,
+    medicamentos JSON
+);
+
 INSERT INTO tbUsuarios VALUES 
     ('153.453.820-85', 'Thiago Ribeiro', '123', '+55 (11) 94312-3154', 'Rua da Mooca, 2047',        'Cliente'),
     ('693.868.540-15', 'Robson Nunes',   '456', '+55 (11) 94215-4212', 'Rua Pedro de Toledo, 447',  'Farmaceutico'),

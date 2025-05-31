@@ -12,7 +12,10 @@
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Cart.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Pharmacist.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/ClientController.java
+/home/patrick/Desktop/Pharmatech-Server/src/main/java/server/controllers/ReservationController.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/repository/StorekeeperRepository.java
+/home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Reservation.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Client.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/model/Medication.java
+/home/patrick/Desktop/Pharmatech-Server/src/main/java/server/repository/ReservationRepository.java
 /home/patrick/Desktop/Pharmatech-Server/src/main/java/server/repository/UserRepository.java
