@@ -111,7 +111,7 @@ public class CartController {
     }
 
     @GetMapping(path = "findByClientId")
-    public ResponseEntity<List<Cart>> findByClientId(@Valid @RequestParam final int clientId) {
+    public ResponseEntity<List<Cart>> findByClientId(@Valid @RequestParam final Long clientId) {
 
         final List<Cart> cart = cartRepository.findByIdCliente(clientId);
 

@@ -56,9 +56,10 @@ CREATE TABLE tbCarrinho (
 );
 
 CREATE TABLE tbReservas(
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     protocolo VARCHAR(20) NOT NULL,
-    medicamentos JSON
+    medicamentos JSON,
+    valorTotal DOUBLE(5, 2) NOT NULL
 );
 
 INSERT INTO tbUsuarios VALUES 

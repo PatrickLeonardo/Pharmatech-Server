@@ -11,22 +11,19 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import server.model.Cart;
+import server.model.Client;
 import server.model.Medication;
 import server.model.Reservation;
-import server.repository.MedicationsRepository;
-import server.repository.ReservationRepository;
 import server.repository.CartRepository;
 import server.repository.ClientRepository;
-
-import server.model.Client;
-import server.model.Cart;
-import server.model.Medication;
+import server.repository.MedicationsRepository;
+import server.repository.ReservationRepository;
 
 @Controller
 @RequestMapping(path = "/reservations")
@@ -78,6 +75,7 @@ public class ReservationController {
             }
 
             newFormatedReservationJsonObject.put("medicamentos", medicamentosObject);
+            newFormatedReservationJsonObject.put("valorTotal", reservation.getValorTotal());
             callBack.put(newFormatedReservationJsonObject);
             
         }
@@ -87,26 +85,28 @@ public class ReservationController {
     }
 
     @PostMapping(path = "newReservation")
+    @Transactional
     public ResponseEntity<Object> newReservation(@Valid @RequestParam final String cpf, @Valid @RequestParam final String protocolo) {
-        System.out.println(cpf);
 
         Reservation reservation = new Reservation();
         reservation.setProtocolo(protocolo);
 
+        double totalValue = 0;
+        
         JSONArray medications = new JSONArray();
 
-        Client client = clientRepository.findByCpf(cpf);
-        System.out.println(cpf);
-        System.out.println(client);
+        Client client = clientRepository.findByCpf(cpf); 
         
-        Long clientId = client.getId();
-        
-        List<Cart> carts = cartRepository.findByIdCliente(clientId.intValue());
-        
+        List<Cart> carts = cartRepository.findByIdCliente(client.getId());
+
         for (Cart cart : carts) {
 
             JSONObject medicationObject = new JSONObject();
-            
+            //Optional medication = medicationsRepository.findById(cart.getIdMentiment());
+
+            Integer medicamentoId = cart.getIdMedicamento();
+
+            totalValue += medicationsRepository.findById(medicamentoId.longValue()).get().getPreco();
             medicationObject.put("idMedicamento", cart.getIdMedicamento());
             medicationObject.put("quantidadeReservada", cart.getQuantidade());
 
@@ -115,8 +115,11 @@ public class ReservationController {
         }
 
         reservation.setMedicamentos(medications.toString());
+        reservation.setValorTotal(totalValue);    
 
         reservationRepository.save(reservation);
+        
+        cartRepository.deleteByIdCliente(client.getId());
 
         return ResponseEntity.status(201).build();
 

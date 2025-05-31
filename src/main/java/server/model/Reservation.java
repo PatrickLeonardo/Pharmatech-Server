@@ -24,4 +24,7 @@ public class Reservation {
     @Column(name = "medicamentos", columnDefinition = "json")
     private String medicamentos;
 
+    @Column(name = "valorTotal")
+    private Double valorTotal;
+
 }
