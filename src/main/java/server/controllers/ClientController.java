@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,8 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(path = "findClientByCPF")
-    public ResponseEntity<Client> findClientIdByCPF(@Valid @RequestParam final String CPF) {
+    @GetMapping(path = "findClientByCPF/{CPF}")
+    public ResponseEntity<Client> findClientIdByCPF(@Valid @PathVariable final String CPF) {
 
         Client client = clientRepository.findByCpf(CPF);
 

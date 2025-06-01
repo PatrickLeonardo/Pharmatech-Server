@@ -34,8 +34,8 @@ public class MedicationsController {
 
     }
 
-    @GetMapping(path = "findByNome")
-    public ResponseEntity<List<Medication>> findByNome(@Valid @RequestParam final String nome) {
+    @GetMapping(path = "findByNome/{nome}")
+    public ResponseEntity<List<Medication>> findByNome(@Valid @PathVariable final String nome) {
          
         final List<Medication> medications = medicationsRepository.findByNomeLike("%" + nome + "%");
         
@@ -43,8 +43,8 @@ public class MedicationsController {
 
     }
 
-    @GetMapping(path = "findById")
-    public ResponseEntity<Optional<Medication>> findById(@Valid @RequestParam Long id) {
+    @GetMapping(path = "findById/{id}")
+    public ResponseEntity<Optional<Medication>> findById(@Valid @PathVariable Long id) {
 
         final Optional<Medication> medication = medicationsRepository.findById(id);
 

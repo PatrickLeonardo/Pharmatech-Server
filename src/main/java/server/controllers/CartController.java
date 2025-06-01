@@ -12,12 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 import jakarta.validation.Valid;
 import server.model.Cart;
@@ -47,21 +47,21 @@ public class CartController {
     @GetMapping("findAll")
         public ResponseEntity<String> findAll() {
 
-        List<Cart> cartList = cartRepository.findAll();
-        JSONArray cartArray = new JSONArray();
+        final List<Cart> cartList = cartRepository.findAll();
+        final JSONArray cartArray = new JSONArray();
         
-        for(Cart cart : cartList) {
+        for(final Cart cart : cartList) {
             
-            JSONObject jsonObject = new JSONObject();
+            final JSONObject jsonObject = new JSONObject();
 
-            Long clientId = Long.parseLong("%d".formatted(cart.getIdCliente()));
+            final Long clientId = Long.parseLong("%d".formatted(cart.getIdCliente()));
             
-            Optional<Client> client = clientRepository.findById(clientId);
-            String clientCpf = client.get().getCpf();
+            final Optional<Client> client = clientRepository.findById(clientId);
+            final String clientCpf = client.get().getCpf();
 
-            String nomeUsuario = userRepository.findByCpf(clientCpf).getNome(); 
-            Optional<Medication> medication = medicationsRepository.findById(Long.parseLong("%d".formatted(cart.getIdMedicamento())));
-            String medicationName = medication.get().getNome();
+            final String nomeUsuario = userRepository.findByCpf(clientCpf).getNome(); 
+            final Optional<Medication> medication = medicationsRepository.findById(Long.parseLong("%d".formatted(cart.getIdMedicamento())));
+            final String medicationName = medication.get().getNome();
 
             jsonObject.put("id", cart.getId());
             jsonObject.put("Cliente", nomeUsuario);
@@ -84,7 +84,7 @@ public class CartController {
             return new ResponseEntity<HttpStatus>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        Cart amazenededCart = cartRepository.findByIdMedicamentoAndIdCliente(cart.getIdMedicamento(), cart.getIdCliente());
+        final Cart amazenededCart = cartRepository.findByIdMedicamentoAndIdCliente(cart.getIdMedicamento(), cart.getIdCliente());
 
         if(amazenededCart == null) {
             
@@ -101,8 +101,8 @@ public class CartController {
 
     }
 
-    @DeleteMapping(path = "deleteItemInCartById")
-    public ResponseEntity<HttpStatus> deleteItemInCartById(@Valid @RequestParam final Long cartId) {
+    @DeleteMapping(path = "deleteItemInCartById/{cartId}")
+    public ResponseEntity<HttpStatus> deleteItemInCartById(@Valid @PathVariable final Long cartId) {
         
         cartRepository.deleteById(cartId);
 
@@ -110,8 +110,8 @@ public class CartController {
 
     }
 
-    @GetMapping(path = "findByClientId")
-    public ResponseEntity<List<Cart>> findByClientId(@Valid @RequestParam final Long clientId) {
+    @GetMapping(path = "findByClientId/{clientId}")
+    public ResponseEntity<List<Cart>> findByClientId(@Valid @PathVariable final Long clientId) {
 
         final List<Cart> cart = cartRepository.findByIdCliente(clientId);
 
